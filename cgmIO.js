@@ -1,6 +1,7 @@
 module.exports = (io, cgm) => {
   const nsp = io.of('/cgm');
   cgm.on('glucose', (message) => {
+    console.log(`got glucose: ${message.glucose}`);
     var bufArr = new ArrayBuffer(14);
     var dataView = new DataView(bufArr);
     // opcode
