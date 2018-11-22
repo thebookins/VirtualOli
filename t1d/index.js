@@ -1,16 +1,28 @@
-const Model = require('./hovorka');
+const Model = require('marjorie');
 
-module.exports = (dt) => {
-  const model = Model(dt);
+module.exports = () => {
+  const model = Model(1);
 
-  const api = {
-    step: () => {
-      model.step();
+  // private data
+  var bloodGlucose = 100;
+  var cob = 0;
+  var iob = 0;
+
+  setInterval(() => {
+    console.log('stepping');
+    model.step();
+  }, 60000);
+
+  return {
+    // API (public) functions
+    eat: (g) => {
+      COB += units;
     },
-    eat: () => {},
-    dose: () => {},
+
+    dose: (units) => {
+      iob += units;
+    },
+
     sense: () => model.glucose,
   };
-
-  return api;
-};
+}

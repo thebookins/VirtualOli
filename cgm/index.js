@@ -17,7 +17,8 @@ module.exports = (t1d) => {
   var trend = 0;
 
   setInterval(() => {
-    if (!(timestamp % 300)) { // every five minutes
+    if (!(timestamp % 1)) { // every five minutes
+      console.log('emitteing glucose')
       eventEmitter.emit('glucose', {
         status,
         sequence,

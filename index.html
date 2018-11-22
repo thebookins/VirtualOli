@@ -21,14 +21,16 @@
       // cgm
       var cgm = io('/cgm');
       cgm.on('message', function(value) {
+        console.log('got glucose')
         const view = new Uint8Array(value);
+        let el;
         switch(view[0]) {
           case 0x25:
-            const el = document.getElementById('sensor-time');
+            el = document.getElementById('sensor-time');
             el.innerHTML = 'sensor-time: ' + toHexString(Array.from(view));
             break;
           case 0x31:
-            const el = document.getElementById('glucose');
+            el = document.getElementById('glucose');
             el.innerHTML = 'glucose: ' + toHexString(Array.from(view));
             break;
           default:
